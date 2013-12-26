@@ -1,0 +1,176 @@
+webonise@webonise-desktop:~/Desktop/parser_assignment$ g++ parsfile.cpp
+webonise@webonise-desktop:~/Desktop/parser_assignment$ ./a.out
+
+Enter your filename.extension: binding.rb
+
+This is a Ruby File....
+
+ Class name: MyClass
+
+ Class name: MyOtherClass
+
+ Method in Ruby Class: initialize(s)
+
+ Method in Ruby Class: getBinding
+
+ Method in Ruby Class: initialize(s)
+
+ Method in Ruby Class: getBinding
+webonise@webonise-desktop:~/Desktop/parser_assignment$ ./a.out
+
+Enter your filename.extension: college.java
+
+This is Java File
+
+ Class name: College
+
+ Class name: Faculty{
+
+ Property in Java Class: collegeCode;
+
+ Property in Java Class: telephoneNumber;
+
+ Property in Java Class: numberOfStudents;
+
+ Property in Java Class: name;
+
+ Property in Java Class: subject;
+
+ Property in Java Class: salary;
+
+ Function in Java Class: getCollegeCode()
+
+ Function in Java Class: setCollegeCode(String
+
+ Function in Java Class: getAddress()
+
+ Function in Java Class: setAddress(String
+
+ Function in Java Class: getNumberOfStudents()
+
+ Function in Java Class: setNumberOfStudents(Long
+
+ Function in Java Class: getTelephoneNumber()
+
+ Function in Java Class: setTelephoneNumber(String
+
+ Function in Java Class: setListOfFaculty(List<Faculty>
+
+ Function in Java Class: getName()
+
+ Function in Java Class: setName(String
+
+ Function in Java Class: getSubject()
+
+ Function in Java Class: setSubject(String
+
+ Function in Java Class: getSalary()
+
+ Function in Java Class: setSalary(Long
+
+ Function in Java Class: main(String
+webonise@webonise-desktop:~/Desktop/parser_assignment$ ./a.out
+
+Enter your filename.extension: student.java
+
+This is Java File
+
+ Class name: Student
+
+ Property in Java Class: Name;
+
+ Property in Java Class: middleName;
+
+ Property in Java Class: age;
+
+ Function in Java Class: getMiddleName()
+
+ Function in Java Class: setMiddleName(String
+
+ Function in Java Class: getAge()
+
+ Function in Java Class: setAge(Long
+
+ Function in Java Class: getAggregate()
+
+ Function in Java Class: setAggregate(Double
+webonise@webonise-desktop:~/Desktop/parser_assignment$ ./a.out
+
+Enter your filename.extension: myclass.php
+
+This is a php file...
+
+ Class name: myClassA
+
+ Class name: myClassB
+
+Property of class is: $message
+
+Function Name is setMessage($msg) with Access Specifier as: private
+
+Function Name is getMessage() with Access Specifier as: protected
+
+Function Name is showMessage($msg with Access Specifier as: public
+webonise@webonise-desktop:~/Desktop/parser_assignment$ class.smtp.php
+class.smtp.php: command not found
+webonise@webonise-desktop:~/Desktop/parser_assignment$ ./a.out
+
+Enter your filename.extension: class.smtp.php
+
+This is a php file...
+
+ Class name: //
+
+ Class name: that
+
+ Class name: SMTP
+
+ Class name: so
+
+ Class name: does
+
+ Class name: and
+
+Property of class is: $SMTP_PORT
+
+Property of class is: $CRLF
+
+Property of class is: $do_debug;
+
+Property of class is: $smtp_conn;
+
+Property of class is: $error;
+
+Property of class is: $helo_rply;
+
+Function Name is Connect($host,$port=0,$tval=30) with Access Specifier as: public
+
+Function Name is if(substr(PHP_OS, with Access Specifier as: public
+
+Function Name is Connected() with Access Specifier as: private
+
+Function Name is without with Access Specifier as: private
+
+Function Name is Close() with Access Specifier as: public
+
+Function Name is Expand($name) with Access Specifier as: public
+
+Function Name is Hello($host="") with Access Specifier as: public
+
+Function Name is Mail($from) with Access Specifier as: public
+
+Function Name is Noop() with Access Specifier as: public
+
+Function Name is Quit($close_on_error=true) with Access Specifier as: public
+
+Function Name is Recipient($to) with Access Specifier as: public
+
+Function Name is Send($from) with Access Specifier as: public
+
+Function Name is Turn() with Access Specifier as: public
+
+Function Name is Verify($name) with Access Specifier as: public
+
+Function Name is get_lines() with Access Specifier as: private
+webonise@webonise-desktop:~/Desktop/parser_assignment$ 
+
