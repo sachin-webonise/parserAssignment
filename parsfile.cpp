@@ -2,6 +2,7 @@
 #include<string>
 #include<fstream>
 #include<cstring>
+
 using std::ifstream;
 using namespace std;
 
@@ -30,14 +31,13 @@ class Files
 
       }// end while
     
-  }//end findClassNames
+  }//end function findClassNames
 };//end super class
 
 
 // class for Java Files as input
 class JavaFile : public Files
-{
-  
+{  
   public:
   void findMethodsInClass(char fileName[20])
   {
@@ -148,7 +148,7 @@ class PhpFile :public Files
         if(!buffer.compare("function"))
           {
             inputFile>>buffer;            
-            cout<<"\nFunction Name is: "<<buffer<<" with Access Specifier as: "; 
+            cout<<"\nFunction Name is: "<<buffer<<" with Access Specifier: "; 
             switch(flag)
             {
               case 1:
@@ -161,7 +161,7 @@ class PhpFile :public Files
                       cout<<"private\n"; 
                       break;  
               case 0:
-                      cout<<"No access specifier.(Default function)\n"; 
+                      cout<<"No access specifier.\n"; 
               default: ;//do nothing
 
             }//end switch  
@@ -224,7 +224,6 @@ class RubyFile : public Files
         }
       }// end while
     
-
   }// end function
 
   void findMethodsInClass(char fileName[20])
@@ -257,48 +256,45 @@ void processFile(Files& aFile,char fileName[20])
 //NonMember Function of all classes
 int main()
 {
-  char storage[200];
-  char fileName[20];
+  char storage[200];  
   char storeData[20]; 
   int index;
-
+  char inputFiles[][20] = {"student.java","college.java","binding.rb","myclass.php","class.smtp.php"};  
   ifstream inputFile; 
-  //Files aFile;
-  cout<<"\nEnter your filename.extension: ";
-  cin>>fileName;
-
-  inputFile.open(fileName);
-  while(!inputFile.eof())
-  {
-    inputFile>>storeData;
-    string str(storeData);
-    if(!str.compare("<?php"))
-    {
-      cout<<"\nThis is a php file...\n";
-      PhpFile phpFile;
-      processFile(phpFile,fileName);
-      //&aFile = phpFile;
-      break;
-    }
-    else if((!str.compare("import")) || (!str.compare("public")))
-    {
-      cout<<"\nThis is Java File\n";
-      JavaFile javaFile;
-      processFile(javaFile,fileName);
-      //&aFile = javaFile;
-      break;      
-    }
-    else if(!str.compare("class"))
-    {
-      cout<<"\nThis is a Ruby File....\n";
-      RubyFile rubyFile;
-      processFile(rubyFile,fileName);
-      //&aFile = rubyFile;
-      break;
-    }
-   
-  }//end while
-
   
+  for(index=0 ; index<5 ; index++)
+  {
+    inputFile.open(inputFiles[index]);
+    while(!inputFile.eof())
+    {
+      inputFile>>storeData;
+      string str(storeData);
+      if(!str.compare("<?php"))
+      {
+        cout<<"\nThis is a php file...\n"<<inputFiles[index];
+        PhpFile phpFile;
+        processFile(phpFile,inputFiles[index]);      
+        break;
+      }
+      else if( (!str.compare("import")) || (!str.compare("public")) )
+      {
+        cout<<"\nThis is Java File...\n"<<inputFiles[index];
+        JavaFile javaFile;
+        processFile(javaFile,inputFiles[index]);      
+        break;      
+      }
+      else if(!str.compare("class"))
+      {
+        cout<<"\nThis is a Ruby File....\n"<<inputFiles[index];
+        RubyFile rubyFile;
+        processFile(rubyFile,inputFiles[index]);      
+        break;
+      }
+     
+    }//end inner while
+    inputFile.close();
+    cout<<"-------------------------------------------------------------------------------------------\n"<<endl;
+  }//end outer for
+
   return 0;
 }
