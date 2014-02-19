@@ -4,16 +4,13 @@
 #include<cstring>
 using namespace std;
 using std::ifstream;
-/*abstract class Files
+class Files
 {
 public:
-Files()
-{
-    cout<<"In a Super constructor...constructor of Files...";
-}
 
-};*/
-////// class for Php Files
+
+};
+
 
 
 
@@ -26,7 +23,7 @@ public:
 //  cout<<"\nIn Java File Class....constructor..."; 
     }
 public:
-    void findMethosInClass(char fileName[20])
+    void findMethodsInClass(char fileName[20])
     {
         int index=0;
         int flag=0;
@@ -156,7 +153,7 @@ public:
         obj.findClassNames(fileName);
     }
 
-    void findMethosInClass(char fileName[20])
+    void findMethodsInClass(char fileName[20])
     {
         char ch;
 int flag=0;//
@@ -168,7 +165,7 @@ std::string buffer;
 char previousWord[100];
 std::string functionName;
 char accessSpecifier[20]; 
-//cout<<"\nIn findMethosInClass............";
+//cout<<"\nIn findMethodsInClass............";
 inputFile.open(fileName);
 if(inputFile.is_open())
 {
@@ -309,7 +306,7 @@ public:
             cout<<"\nFile is NOT opened........";
         }
     }// end function
-    void findMethosInClass(char fileName[20])
+    void findMethodsInClass(char fileName[20])
     {
         std::ifstream inputFile3;
         std::string word; 
@@ -360,7 +357,7 @@ int main()
             PhpFile php1;
             php1.findClassNames(fileName);     
             php1.findPropertiesOfClass(fileName);
-            php1.findMethosInClass(fileName);
+            php1.findMethodsInClass(fileName);
             break;
 
         }
@@ -370,7 +367,7 @@ int main()
             JavaFile java1;
             java1.findClassNames(fileName);      
             java1.findPropertiesOfClass(fileName);
-            java1.findMethosInClass(fileName);
+            java1.findMethodsInClass(fileName);
             break;      
         }
         else if(str.compare("class")==0)
@@ -379,7 +376,7 @@ int main()
             RubyFiles ruby1;
             ruby1.findClassNames(fileName);
             ruby1.findPropertiesOfClass(fileName);
-            ruby1.findMethosInClass(fileName);     
+            ruby1.findMethodsInClass(fileName);     
             break;
         }
 
