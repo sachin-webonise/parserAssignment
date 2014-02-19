@@ -14,8 +14,9 @@ class Files
     ifstream inputFile;
     string word; 
     inputFile.open(fileName);
-    if(inputFile.is_open())
-    {
+    if(!inputFile.is_open())
+      cout<<"\n Unable to open file ..... ";
+    else
       while(!inputFile.eof())
       {
         inputFile>>word;
@@ -26,11 +27,7 @@ class Files
         }
 
       }// end while
-    }       
-    else
-    {
-      cout<<"\nFile is NOT opened........";
-    }
+    
   }//end findClassNames
 };//end super class
 
