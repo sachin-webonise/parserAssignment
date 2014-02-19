@@ -6,7 +6,7 @@ using namespace std;
 using std::ifstream;
 class Files
 {
-public:
+    public:
 	void findClassNames(char fileName[20])
 	{
 		int index=0;
@@ -19,7 +19,7 @@ public:
 			while(!inputFile.eof())
 			{
 				inputFile>>word;
-				if(word.compare("class")==0)
+				if(!word.compare("class"))
 				{
 					inputFile>>word;
 					cout<<"\n Class name: "<<word<<"\n";  
@@ -59,10 +59,10 @@ public:
 			while(!inputFile.eof())
 			{
 				inputFile>>word;
-				if((word.compare("public")==0)||(word.compare("private")==0)||(word.compare("protected")==0))
+				if( (!word.compare("public")) || (!word.compare("private")) || (!word.compare("protected")) )
 				{
 					inputFile>>word;
-					if((word.compare("void")==0)||(word.compare("String")==0)||(word.compare("Long")==0)||(word.compare("int")==0)||(word.compare("Double")==0))
+					if( (!word.compare("void")) || (!word.compare("String")) || (!word.compare("Long")) || (!word.compare("int")) || (!word.compare("Double")) )
 					{
 						inputFile>>word;
 for(index=0;word[index]!='(';index++)// finds weather word is a function name or variable name    
@@ -101,10 +101,10 @@ void findPropertiesOfClass(char fileName[20])
 		while(!inputFile.eof())
 		{
 			inputFile>>word;
-			if((word.compare("public")==0)||(word.compare("private")==0)||(word.compare("protected")==0))
+			if( (!word.compare("public")) || (!word.compare("private")) || (!word.compare("protected")) )
 			{
 				inputFile>>word;
-				if((word.compare("void")==0)||(word.compare("String")==0)||(word.compare("Long")==0)||(word.compare("int")==0)||(word.compare("Double")==0))
+				if( (!word.compare("void")) || (!word.compare("String")) || (!word.compare("Long")) || (!word.compare("int")) || (!word.compare("Double")) )
 				{
 					inputFile>>word;
 flag=0;//word does not contain variable
@@ -170,21 +170,21 @@ if(inputFile.is_open())
 		inputFile>>buffer;
 //cout <<"\nbuffer at 1: "<<buffer;
 
-		if((buffer.compare("public")==0))
+		if(!buffer.compare("public"))
 		{ 
 			flag=1;
 //cout <<"\nflag is:1 ";
 		}
 		else
 		{
-			if((buffer.compare("protected")==0))
+			if(!buffer.compare("protected"))
 			{
 				flag=2;  
 //cout <<"\nflag is:2 ";
 			}
 			else
 			{ 
-				if((buffer.compare("private")==0))
+				if(!buffer.compare("private"))
 				{                          
 					flag=3;  
 //cout <<"\nflag is:3  ";  
@@ -193,7 +193,7 @@ if(inputFile.is_open())
 }// else1
 inputFile>>buffer;
 //cout <<"\nbuffer at 2: "<<buffer;
-if((buffer.compare("function")==0))
+if(!buffer.compare("function"))
 {
 	inputFile>>buffer;
 //cout <<"\nbuffer at 3: "<<buffer;
@@ -239,7 +239,7 @@ void findPropertiesOfClass(char fileName[20])
 		{
 			inputFile3>>word;              
 //cout<<word; 
-			if((word.compare("public")==0)||(word.compare("private")==0)||(word.compare("protected")==0))                     
+			if( (!word.compare("public")) || (!word.compare("private")) || (!word.compare("protected")))                     
 			{
 				inputFile3>>word;
 				if(word[0]=='$')
@@ -247,7 +247,7 @@ void findPropertiesOfClass(char fileName[20])
 					cout<<"\nProperty of class is: "<<word<<"\n";
 				}              
 			}
-			if((word.compare("var")==0))
+			if(!word.compare("var"))
 			{ 
 				inputFile3>>word;  
 				if(word[0]=='$')
@@ -281,7 +281,7 @@ public:
 			while(!inputFile3.eof())
 			{
 				inputFile3>>word;
-				if(word.compare("class")==0)             
+				if(!word.compare("class"))             
 				{
 					inputFile3>>word;
 					inputFile3>>word;
@@ -308,7 +308,7 @@ public:
     		{
     			inputFile3>>word;              
                 //cout<<word; 
-    			if(word.compare("def")==0)
+    			if(!word.compare("def"))
     			{
     				inputFile3>>word;
     				cout<<"\n Method in Ruby Class: "<<word<<"\n";
@@ -342,7 +342,7 @@ int main()
 	{
 		inputFile>>storeData;
 		string str(storeData);
-		if(str.compare("<?php")==0)
+		if(!str.compare("<?php"))
 		{
 			cout<<"\nThis is a php file...\n";
 			PhpFile php1;
@@ -352,7 +352,7 @@ int main()
 			break;
 
 		}
-		else if((str.compare("import")==0) || (str.compare("public"))==0)
+		else if((!str.compare("import")) || (!str.compare("public")))
 		{
 			cout<<"\nThis is Java File\n";
 			JavaFile java1;
@@ -361,7 +361,7 @@ int main()
 			java1.findMethodsInClass(fileName);
 			break;      
 		}
-		else if(str.compare("class")==0)
+		else if(!str.compare("class"))
 		{
 			cout<<"\nThis is a Ruby File....\n";
 			RubyFiles ruby1;
