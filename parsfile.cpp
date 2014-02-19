@@ -2,15 +2,17 @@
 #include<string>
 #include<fstream>
 #include<cstring>
-using namespace std;
 using std::ifstream;
+using namespace std;
+
 class Files
 {
   public:
+  virtual void findMethodsInClass(char fileName[20]){};
+  virtual void findPropertiesOfClass(char fileName[20]){};
   void findClassNames(char fileName[20])
   {
-    int index=0;
-    int flag=0;
+    int index=0, flag=0;
     ifstream inputFile;
     string word; 
     inputFile.open(fileName);
@@ -194,13 +196,12 @@ class PhpFile :public Files
         }                              
       }// end while
     
-    
-
   }// end function fPOC
+
 };//end of phpFileClass
 
 
-class RubyFiles : public Files
+class RubyFile : public Files
 {
   public:
   void findPropertiesOfClass(char fileName[20])
@@ -247,6 +248,12 @@ class RubyFiles : public Files
   }// end function  
 };//end of rubyFileClass
 
+void processFile(Files& aFile,char fileName[20])
+{
+  aFile.findClassNames(fileName);
+  aFile.findPropertiesOfClass(fileName);
+  aFile.findMethodsInClass(fileName);     
+}
 //NonMember Function of all classes
 int main()
 {
@@ -256,6 +263,7 @@ int main()
   int index;
 
   ifstream inputFile; 
+  //Files aFile;
   cout<<"\nEnter your filename.extension: ";
   cin>>fileName;
 
@@ -267,31 +275,30 @@ int main()
     if(!str.compare("<?php"))
     {
       cout<<"\nThis is a php file...\n";
-      PhpFile php;
-      php.findClassNames(fileName);     
-      php.findPropertiesOfClass(fileName);
-      php.findMethodsInClass(fileName);
+      PhpFile phpFile;
+      processFile(phpFile,fileName);
+      //&aFile = phpFile;
       break;
     }
     else if((!str.compare("import")) || (!str.compare("public")))
     {
       cout<<"\nThis is Java File\n";
-      JavaFile java;
-      java.findClassNames(fileName);      
-      java.findPropertiesOfClass(fileName);
-      java.findMethodsInClass(fileName);
+      JavaFile javaFile;
+      processFile(javaFile,fileName);
+      //&aFile = javaFile;
       break;      
     }
     else if(!str.compare("class"))
     {
       cout<<"\nThis is a Ruby File....\n";
-      RubyFiles ruby;
-      ruby.findClassNames(fileName);
-      ruby.findPropertiesOfClass(fileName);
-      ruby.findMethodsInClass(fileName);     
+      RubyFile rubyFile;
+      processFile(rubyFile,fileName);
+      //&aFile = rubyFile;
       break;
     }
-
+   
   }//end while
+
+  
   return 0;
 }
