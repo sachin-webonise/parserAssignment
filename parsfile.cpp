@@ -342,8 +342,7 @@ int main()
 {
  char storage[200];
  char fileName[20];
- char storeData[20];
- int flag=true;
+ char storeData[20]; 
  int index;
 
  std::ifstream inputFile; 
@@ -351,7 +350,7 @@ int main()
  std::cin>>fileName;
  
  inputFile.open(fileName);
- while(flag)
+ while(true)
   {
    inputFile>>storeData;
    std::string str(storeData);
@@ -362,27 +361,26 @@ int main()
      php1.findClassNames(fileName);     
      php1.findPropertiesOfClass(fileName);
      php1.findMethosInClass(fileName);
-     flag=false;
+     break;
      
     }
-   if((str.compare("import")==0) || (str.compare("public"))==0)
+   else if((str.compare("import")==0) || (str.compare("public"))==0)
     {
       std::cout<<"\nThis is Java File\n";
       JavaFile java1;
       java1.findClassNames(fileName);      
       java1.findPropertiesOfClass(fileName);
       java1.findMethosInClass(fileName);
-       
-      flag=false; 
+      break;      
     }
-   if(str.compare("class")==0)
+   else if(str.compare("class")==0)
      {
       std::cout<<"\nThis is a Ruby File....\n";
       RubyFiles ruby1;
       ruby1.findClassNames(fileName);
       ruby1.findPropertiesOfClass(fileName);
       ruby1.findMethosInClass(fileName);     
-      flag=false;  
+      break;
      }
    
   }
