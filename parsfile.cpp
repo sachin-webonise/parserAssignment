@@ -42,10 +42,10 @@ class JavaFile : public Files
   public:
   void findMethodsInClass(char fileName[20])
   {
-    int index=0;
-    int flag=0;
+    int index=0, flag=0;
     ifstream inputFile;
     string word; 
+
     inputFile.open(fileName);
     if(inputFile.is_open())
     {
@@ -66,25 +66,22 @@ class JavaFile : public Files
                 break;
               }
             }
-            if(word[index]=='(')
-            {
-              cout<<"\n Function in Java Class: "<<word<<"\n";  
-            }
+            if(word[index]=='(')            
+              cout<<"\n Function in Java Class: "<<word<<"\n";              
           }
         }
       }// end while
     }
-    else
-    {
+    else    
       cout<<"\nFile is NOT opened........";
-    }
   }// end function findMethodsInClass
+
   void findPropertiesOfClass(char fileName[20])
   {
-    int index=0;
-    int flag=0;
+    int index=0, flag=0;
     ifstream inputFile;
     string word; 
+
     inputFile.open(fileName);
     if(inputFile.is_open())
     {
@@ -107,18 +104,16 @@ class JavaFile : public Files
               }
             }
             if(flag)
-            {
               cout<<"\n Property in Java Class: "<<word<<"\n";  
-            }
+
           }
         }
 
       }// end while
     }
-    else
-    {
+    else    
       cout<<"\nFile is NOT opened........";
-    }
+
   }// end function findPropertiesOfClass
 
 };//end Java File Class
@@ -131,48 +126,35 @@ class PhpFile :public Files
   void findMethodsInClass(char fileName[20])
   {
     char ch;
-    int flag=0;
-    int index=0, index2=0, index3=0;
-    ifstream inputFile; 
-    string buffer, functionName; 
     char previousWord[100];
     char accessSpecifier[20]; 
-    //cout<<"\nIn findMethodsInClass............";
+
+    int flag=0;
+    int index=0, index2=0, index3=0;
+
+    ifstream inputFile; 
+    string buffer, functionName; 
+    
     inputFile.open(fileName);
     if(inputFile.is_open())
     {
       while(!inputFile.eof())
       {   
-        inputFile>>buffer;
-        //cout <<"\nbuffer at 1: "<<buffer;
+        inputFile>>buffer;        
         if(!buffer.compare("public"))
-        { 
-          flag=1;
-          //cout <<"\nflag is:1 ";
-        }
+          flag=1;          
         else
-        {
           if(!buffer.compare("protected"))
-          {
-            flag=2;  
-            //cout <<"\nflag is:2 ";
-          }
-          else
-          { 
-            if(!buffer.compare("private"))
-            {                          
-              flag=3;  
-              //cout <<"\nflag is:3  ";  
-            }
-          }//else2
-        }// else1
+            flag=2;              
+          else          
+            if(!buffer.compare("private"))                    
+              flag=3;               
+                
         inputFile>>buffer;
-        //cout <<"\nbuffer at 2: "<<buffer;
         if(!buffer.compare("function"))
           {
-            inputFile>>buffer;
-            //cout <<"\nbuffer at 3: "<<buffer;
-            cout<<"\nFunction Name is "<<buffer<<" with Access Specifier as: "; 
+            inputFile>>buffer;            
+            cout<<"\nFunction Name is: "<<buffer<<" with Access Specifier as: "; 
             switch(flag)
             {
               case 1:
@@ -192,10 +174,9 @@ class PhpFile :public Files
           }//end if
         }//endwhile....                                        
     }//end if 
-    else 
-    {
+    else     
       cout<<"\nFile is NOT opened........";
-    }
+
   }// end function
 
 
@@ -208,33 +189,26 @@ class PhpFile :public Files
     {
       while(!inputFile3.eof())
       {
-        inputFile3>>word;              
-        //cout<<word; 
+        inputFile3>>word;                      
         if( (!word.compare("public")) || (!word.compare("private")) || (!word.compare("protected")) )                     
         {
           inputFile3>>word;
-          if(word[0]=='$')
-          {
+          if(word[0]=='$')          
             cout<<"\nProperty of class is: "<<word<<"\n";
-          }              
         }
         if(!word.compare("var"))
         { 
           inputFile3>>word;  
-          if(word[0]=='$')
-          {
-            cout<<"\nProperty of class is: "<<word<<"\n";
-          }              
+          if(word[0]=='$')         
+            cout<<"\nProperty of class is: "<<word<<"\n";          
         }                              
       }// end while
     }
-    else
-    {
+    else    
       cout<<"\nFile is NOT opened........";
-    }
-  }// end function
-};//end of phpFileClass
 
+  }// end function fPOC
+};//end of phpFileClass
 
 
 class RubyFiles : public Files
@@ -254,17 +228,14 @@ class RubyFiles : public Files
         {
           inputFile3>>word;
           inputFile3>>word;
-          if((word[0]=='@')&&(word[1]!='@'))
-          {
+          if((word[0]=='@')&&(word[1]!='@'))          
             cout<<"\n Property in Ruby Class: "<<word<<"\n";
-          }            
         }
       }// end while
     }
     else
-    {
       cout<<"\nFile is NOT opened........";
-    }
+
   }// end function
 
   void findMethodsInClass(char fileName[20])
@@ -276,8 +247,7 @@ class RubyFiles : public Files
     {
       while(!inputFile3.eof())
       {
-        inputFile3>>word;              
-        //cout<<word; 
+        inputFile3>>word;
         if(!word.compare("def"))
         {
           inputFile3>>word;
@@ -286,12 +256,9 @@ class RubyFiles : public Files
       }// end while
     }
     else
-    {
       cout<<"\nFile is NOT opened........";
-    }
   }// end function  
 };//end of rubyFileClass
-
 
 //NonMember Function of all classes
 int main()
@@ -306,35 +273,35 @@ int main()
   cin>>fileName;
 
   inputFile.open(fileName);
-  while(true)
+  while(!inputFile.eof())
   {
     inputFile>>storeData;
     string str(storeData);
     if(!str.compare("<?php"))
     {
       cout<<"\nThis is a php file...\n";
-      PhpFile php1;
-      php1.findClassNames(fileName);     
-      php1.findPropertiesOfClass(fileName);
-      php1.findMethodsInClass(fileName);
+      PhpFile php;
+      php.findClassNames(fileName);     
+      php.findPropertiesOfClass(fileName);
+      php.findMethodsInClass(fileName);
       break;
     }
     else if((!str.compare("import")) || (!str.compare("public")))
     {
       cout<<"\nThis is Java File\n";
-      JavaFile java1;
-      java1.findClassNames(fileName);      
-      java1.findPropertiesOfClass(fileName);
-      java1.findMethodsInClass(fileName);
+      JavaFile java;
+      java.findClassNames(fileName);      
+      java.findPropertiesOfClass(fileName);
+      java.findMethodsInClass(fileName);
       break;      
     }
     else if(!str.compare("class"))
     {
       cout<<"\nThis is a Ruby File....\n";
-      RubyFiles ruby1;
-      ruby1.findClassNames(fileName);
-      ruby1.findPropertiesOfClass(fileName);
-      ruby1.findMethodsInClass(fileName);     
+      RubyFiles ruby;
+      ruby.findClassNames(fileName);
+      ruby.findPropertiesOfClass(fileName);
+      ruby.findMethodsInClass(fileName);     
       break;
     }
 
