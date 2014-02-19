@@ -47,8 +47,9 @@ class JavaFile : public Files
     string word; 
 
     inputFile.open(fileName);
-    if(inputFile.is_open())
-    {
+    if(!inputFile.is_open())
+      cout<<"\nUnable to open file ... ";
+    else
       while(!inputFile.eof())
       {
         inputFile>>word;
@@ -71,9 +72,7 @@ class JavaFile : public Files
           }
         }
       }// end while
-    }
-    else    
-      cout<<"\nFile is NOT opened........";
+    
   }// end function findMethodsInClass
 
   void findPropertiesOfClass(char fileName[20])
@@ -83,8 +82,9 @@ class JavaFile : public Files
     string word; 
 
     inputFile.open(fileName);
-    if(inputFile.is_open())
-    {
+    if(!inputFile.is_open())
+      cout<<"\nUnable to open file ... ";
+    else
       while(!inputFile.eof())
       {
         inputFile>>word;
@@ -108,12 +108,8 @@ class JavaFile : public Files
 
           }
         }
-
       }// end while
-    }
-    else    
-      cout<<"\nFile is NOT opened........";
-
+    
   }// end function findPropertiesOfClass
 
 };//end Java File Class
@@ -136,19 +132,18 @@ class PhpFile :public Files
     string buffer, functionName; 
     
     inputFile.open(fileName);
-    if(inputFile.is_open())
-    {
+    if(!inputFile.is_open())
+      cout<<"\nUnable to open file ... ";
+    else
       while(!inputFile.eof())
       {   
         inputFile>>buffer;        
         if(!buffer.compare("public"))
           flag=1;          
-        else
-          if(!buffer.compare("protected"))
-            flag=2;              
-          else          
-            if(!buffer.compare("private"))                    
-              flag=3;               
+        else if(!buffer.compare("protected"))
+          flag=2;              
+        else if(!buffer.compare("private"))                    
+          flag=3;               
                 
         inputFile>>buffer;
         if(!buffer.compare("function"))
@@ -172,11 +167,8 @@ class PhpFile :public Files
 
             }//end switch  
           }//end if
-        }//endwhile....                                        
-    }//end if 
-    else     
-      cout<<"\nFile is NOT opened........";
-
+      }//endwhile....                                        
+    
   }// end function
 
 
@@ -185,8 +177,9 @@ class PhpFile :public Files
     ifstream inputFile3;
     string word; 
     inputFile3.open(fileName);
-    if(inputFile3.is_open())
-    {
+    if(!inputFile3.is_open())
+      cout<<"\nUnable to open file ... ";
+    else
       while(!inputFile3.eof())
       {
         inputFile3>>word;                      
@@ -203,9 +196,8 @@ class PhpFile :public Files
             cout<<"\nProperty of class is: "<<word<<"\n";          
         }                              
       }// end while
-    }
-    else    
-      cout<<"\nFile is NOT opened........";
+    
+    
 
   }// end function fPOC
 };//end of phpFileClass
@@ -219,8 +211,9 @@ class RubyFiles : public Files
     ifstream inputFile3;
     string word; 
     inputFile3.open(fileName);
-    if(inputFile3.is_open())
-    {
+    if(!inputFile3.is_open())
+      cout<<"\nUnable to open file ... ";
+    else
       while(!inputFile3.eof())
       {
         inputFile3>>word;
@@ -232,9 +225,7 @@ class RubyFiles : public Files
             cout<<"\n Property in Ruby Class: "<<word<<"\n";
         }
       }// end while
-    }
-    else
-      cout<<"\nFile is NOT opened........";
+    
 
   }// end function
 
@@ -243,8 +234,9 @@ class RubyFiles : public Files
     ifstream inputFile3;
     string word; 
     inputFile3.open(fileName);
-    if(inputFile3.is_open())
-    {
+    if(!inputFile3.is_open())
+      cout<<"\nUnable to open file ... ";
+    else
       while(!inputFile3.eof())
       {
         inputFile3>>word;
@@ -254,9 +246,7 @@ class RubyFiles : public Files
           cout<<"\n Method in Ruby Class: "<<word<<"\n";
         }            
       }// end while
-    }
-    else
-      cout<<"\nFile is NOT opened........";
+    
   }// end function  
 };//end of rubyFileClass
 
