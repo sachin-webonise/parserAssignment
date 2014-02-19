@@ -264,6 +264,7 @@ int main()
   
   for(index=0 ; index<5 ; index++)
   {
+    cout<<"----------------------------------------------------------------------------\n"<<endl;
     inputFile.open(inputFiles[index]);
     while(!inputFile.eof())
     {
@@ -271,21 +272,21 @@ int main()
       string str(storeData);
       if(!str.compare("<?php"))
       {
-        cout<<"\nThis is a php file...\n"<<inputFiles[index];
+        cout<<inputFiles[index]<<"\nThis is a php file...\n";
         PhpFile phpFile;
         processFile(phpFile,inputFiles[index]);      
         break;
       }
       else if( (!str.compare("import")) || (!str.compare("public")) )
       {
-        cout<<"\nThis is Java File...\n"<<inputFiles[index];
+        cout<<inputFiles[index]<<"\nThis is Java File...\n";
         JavaFile javaFile;
         processFile(javaFile,inputFiles[index]);      
         break;      
       }
       else if(!str.compare("class"))
       {
-        cout<<"\nThis is a Ruby File....\n"<<inputFiles[index];
+        cout<<inputFiles[index]<<"\nThis is a Ruby File....\n";
         RubyFile rubyFile;
         processFile(rubyFile,inputFiles[index]);      
         break;
@@ -293,7 +294,7 @@ int main()
      
     }//end inner while
     inputFile.close();
-    cout<<"-------------------------------------------------------------------------------------------\n"<<endl;
+    
   }//end outer for
 
   return 0;
