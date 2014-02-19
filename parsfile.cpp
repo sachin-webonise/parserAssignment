@@ -11,8 +11,8 @@ public:
 	{
 		int index=0;
 		int flag=0;
-		std::ifstream inputFile;
-		std::string word; 
+		ifstream inputFile;
+		string word; 
 		inputFile.open(fileName);
 		if(inputFile.is_open())
 		{
@@ -51,8 +51,8 @@ public:
 	{
 		int index=0;
 		int flag=0;
-		std::ifstream inputFile;
-		std::string word; 
+		ifstream inputFile;
+		string word; 
 		inputFile.open(fileName);
 		if(inputFile.is_open())
 		{
@@ -93,8 +93,8 @@ void findPropertiesOfClass(char fileName[20])
 {
 	int index=0;
 	int flag=0;
-	std::ifstream inputFile;
-	std::string word; 
+	ifstream inputFile;
+	string word; 
 	inputFile.open(fileName);
 	if(inputFile.is_open())
 	{
@@ -155,10 +155,10 @@ int flag=0;//
 int index=0;
 int index2=0;
 int index3=0;
-std::ifstream inputFile; 
-std::string buffer; 
+ifstream inputFile; 
+string buffer; 
 char previousWord[100];
-std::string functionName;
+string functionName;
 char accessSpecifier[20]; 
 //cout<<"\nIn findMethodsInClass............";
 inputFile.open(fileName);
@@ -230,8 +230,8 @@ else
 }// end function
 void findPropertiesOfClass(char fileName[20])
 {
-	std::ifstream inputFile3;
-	std::string word; 
+	ifstream inputFile3;
+	string word; 
 	inputFile3.open(fileName);
 	if(inputFile3.is_open())
 	{
@@ -273,8 +273,8 @@ public:
 	
 	void findPropertiesOfClass(char fileName[20])
 	{
-		std::ifstream inputFile3;
-		std::string word; 
+		ifstream inputFile3;
+		string word; 
 		inputFile3.open(fileName);
 		if(inputFile3.is_open())
 		{
@@ -299,8 +299,8 @@ public:
     }// end function
     void findMethodsInClass(char fileName[20])
     {
-    	std::ifstream inputFile3;
-    	std::string word; 
+    	ifstream inputFile3;
+    	string word; 
     	inputFile3.open(fileName);
     	if(inputFile3.is_open())
     	{
@@ -333,7 +333,7 @@ int main()
 	char storeData[20]; 
 	int index;
 
-	std::ifstream inputFile; 
+	ifstream inputFile; 
 	cout<<"\nEnter your filename.extension: ";
 	cin>>fileName;
 
@@ -341,7 +341,7 @@ int main()
 	while(true)
 	{
 		inputFile>>storeData;
-		std::string str(storeData);
+		string str(storeData);
 		if(str.compare("<?php")==0)
 		{
 			cout<<"\nThis is a php file...\n";
